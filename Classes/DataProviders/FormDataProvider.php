@@ -17,7 +17,7 @@ class FormDataProvider extends BaseDataProvider {
         $IsNameValueFromFormExist = key_exists("name", $_GET);
         $IsPasswordValueFromFormExist = key_exists("password", $_GET);
         
-        $data -> IsProviderDataExist = $IsPasswordValueFromFormExist && $IsNameValueFromFormExist;
+        $data -> IsProviderDataExists = $IsPasswordValueFromFormExist && $IsNameValueFromFormExist;
         $data -> Nickname = $IsNameValueFromFormExist ? $_GET["name"] : "unknown";
         $data -> Password = $IsPasswordValueFromFormExist ? $_GET["password"] : "unknown";
         $data -> IsAuthorized = $data -> IsProviderDataExists && strtolower($data -> Nickname) == "root";

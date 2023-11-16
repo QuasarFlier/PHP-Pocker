@@ -34,7 +34,7 @@ class BaseDataProvider {
     public function __construct(stdClass $data) 
     {
 
-        $this -> _isProviderDataExists = $data -> IsProviderDataExist;
+        $this -> _isProviderDataExists = $data -> IsProviderDataExists;
         $this -> _nickname = $data -> Nickname;
         $this -> _password = $data -> Password;
         $this -> _isAuthorized = $data -> IsAuthorized;

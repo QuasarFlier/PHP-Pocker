@@ -2,11 +2,10 @@
 
 namespace Classes\DataProviders;
 
-use stdClass;
-
 require_once "BaseDataProvider.php";
 require_once "Classes/Session.php";
 
+use stdClass;
 use Classes\Session;
 use Exception;
 

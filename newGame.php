@@ -1,6 +1,14 @@
 <?php 
-require_once "Classes/Session.php";
-use Classes\Session;
+
+require_once 'Classes/DataProviders/SessionDataProvider.php';
+
+use Classes\DataProviders\SessionDataProvider;
+
+$sessionDataProvider = new SessionDataProvider();
+
+
+//require_once "Classes/Session.php";
+//use Classes\Session;
 session_start();
 //var_dump(Session::GetDataProvidersData());
 
