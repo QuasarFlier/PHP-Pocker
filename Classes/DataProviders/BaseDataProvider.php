@@ -6,7 +6,7 @@ use stdClass;
 
 class BaseDataProvider {
 
-    private int $_balance;
+    protected int $_balance;
 
     private string $_nickname;
      

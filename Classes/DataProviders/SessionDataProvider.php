@@ -7,12 +7,15 @@ require_once "Classes/Session.php";
 
 use stdClass;
 use Classes\Session;
-use Exception;
+use \Error;
 
 class SessionDataProvider extends BaseDataProvider {
     public function __construct()
     {
         $data = new stdClass();
+        $data -> Nickname = "unknown";
+        $data -> IsAuthorized = false;
+        $data -> Balance = 0;
 
         try {
             $dataProviderData = Session::GetDataProvidersData();
@@ -20,7 +23,7 @@ class SessionDataProvider extends BaseDataProvider {
             $data -> Balance = $dataProviderData["Balance"];
             $data -> IsAuthorized = $dataProviderData["IsAuthorized"];
             $data -> IsProviderDataExists = true;
-        } catch (Exception $exception) {
+        } catch (Error $exception) {
             $data -> IsProviderDataExists = false;
         }
 

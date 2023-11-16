@@ -26,6 +26,10 @@ class FormDataProvider extends BaseDataProvider {
         parent::__construct($data);
     }
 
+    public function SetBalance(int $balance): void {
+        $this -> _balance = $balance;
+    }
+
     public function SetIsAuthorized(bool $isAuthorized): void {
         $this -> _isAuthorized = $isAuthorized;
     }

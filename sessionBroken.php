@@ -1,5 +1,5 @@
 <?php 
-session_start();
+require_once 'pageParts/Session.All.Init.php';
 
 require_once 'Classes/DataProviders/SessionDataProvider.php';
 

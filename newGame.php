@@ -1,17 +1,9 @@
 <?php 
-
-require_once 'Classes/DataProviders/SessionDataProvider.php';
-
-use Classes\DataProviders\SessionDataProvider;
-
-$sessionDataProvider = new SessionDataProvider();
-
+require_once "pageParts/Session.Authorized.Init.php";
 
 //require_once "Classes/Session.php";
 //use Classes\Session;
-session_start();
 //var_dump(Session::GetDataProvidersData());
-
 ?>
 <html lang="en">
     <?php require_once 'pageParts/header.part.html'; ?>
