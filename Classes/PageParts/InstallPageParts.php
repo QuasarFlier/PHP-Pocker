@@ -87,8 +87,8 @@ class InstallPageParts extends PagePartsBase {
             DROP TABLE IF EXISTS Games;
             CREATE TABLE Games (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                Deck INTEGER,
-                Boeard INTEGER
+                Deck VARCHAR,
+                Board VARCHAR
             )
         SQL_QUERY;
 
@@ -100,7 +100,7 @@ class InstallPageParts extends PagePartsBase {
             DROP TABLE IF EXISTS Players;
             CREATE TABLE Players (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                Deck INTEGER,
+                Deck VARCHAR,
                 GameID INTEGER REFERENCES Games(ID),
                 ProfileID INTEGER REFERENCES Profile(ID)
             )

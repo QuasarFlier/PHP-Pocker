@@ -5,11 +5,15 @@ namespace Classes\PageParts;
 require_once "Classes/PageParts/PagePartsBase.php";
 require_once "Classes/PageParts/LobbyGamesTable.php";
 require_once "Classes/Profile.php";
+require_once "Classes/Deck.php";
+require_once "Classes/DataBase.php";
 
 use ArrayObject;
 use Classes\PageParts\PagePartsBase;
 use Classes\PageParts\LobbyGamesTable;
 use Classes\Profile;
+use Classes\Deck;
+use Classes\DataBase;
 
 class lobbyGamesContainer extends PagePartsBase {
     
@@ -17,10 +21,16 @@ class lobbyGamesContainer extends PagePartsBase {
     
     private array $_tables = [];
 
-    public function __construct(Profile $profile)
+    public function __construct(Profile $profile, DataBase $database)
     {
+        $deckStates = $database -> GetLobbyDecks();
+        //$deckStates -> 
+
         for($counter = 0; $counter < self::TABLES_COUNT; $counter++) {
-            $this -> _tables[] = new LobbyGamesTable($profile);
+            $deck = new Deck();
+            $deck -> RestoreEncodedDeckState($deckStates[$counter]);
+
+            $this -> _tables[] = new LobbyGamesTable($profile, $deck);
         }
 
         parent::__construct($profile);
@@ -51,8 +61,6 @@ class lobbyGamesContainer extends PagePartsBase {
                         <td>
                         $topRightTableContent
                         </td>
-                    </tr>
-                    <tr>
                         <td>
                         $bottomLeftTableContent
                         </td>

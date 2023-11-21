@@ -9,7 +9,11 @@ require_once 'Classes\Player.php';
 use \Classes\Player as Player;
 
 class PokerGame {
+
+    public const TABLE_SEATS=6;
+
     private Deck $deck;
+
     private array $players;
 
     public function __construct(int $playersCount) {

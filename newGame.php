@@ -34,6 +34,18 @@ require_once "pageParts/Session.Authorized.Init.php";
         $pokerGame -> ShowDeck();
         $pokerGame -> ShowPlayersHands();
 
+        echo "<br>";
+        $deckState = base64_encode($deck->GetDeckState());
+        var_dump($deckState);
+        echo "<br>";
+        $deck -> ShowDeck();
+        echo "<br>";
+        $deck -> ShuffleDeck();
+        $deck -> ShowDeck();
+        echo "<br>";
+        $deck -> RestoreDeckState(base64_decode($deckState));
+        $deck -> ShowDeck();
+
         ?>
     </body>
 </html>

@@ -32,6 +32,56 @@ class Deck {
         }
     }
 
+    public function GetDeckState() : string {
+
+        $result = array_reduce($this->deck, function($accumulator, $value){
+            if(!isset($accumulator)){
+                $accumulator = "";
+            }
+            return $accumulator.(string)($value)."_";
+        }); 
+
+        if (is_null($result)) {
+            return "NULL";
+        }
+
+        return $result;
+
+    }
+
+    public function GetEncodedDeckState() : string {
+
+        $deckState = $this->GetDeckState();
+        return base64_encode($deckState);
+
+    }
+
+    public function GetHashedDeckState() : string {
+
+        $deckState = $this->GetDeckState();
+        return  md5($deckState);
+
+    }
+
+    public function RestoreDeckState($deckState) : void {
+        $deskInStrings = explode("_", $deckState);
+        $this->deck = [];
+
+        if ($deckState === "NULL") {
+            return;
+        }
+
+        foreach ($deskInStrings as $cardInString) {
+            $this->deck[] = intval($cardInString);
+        }
+    }
+
+    public function RestoreEncodedDeckState($encodedDeckState) : void {
+        $deckState = base64_decode($encodedDeckState);
+
+        $this->RestoreDeckState($deckState);
+    }
+
     public function ShuffleDeck() : void {
         shuffle($this -> deck);
     }
